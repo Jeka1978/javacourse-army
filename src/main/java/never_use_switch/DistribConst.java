@@ -6,6 +6,5 @@ package never_use_switch;
 public interface DistribConst {
     String SMS = "001";
     String WHATSAPP = "002";
-    String TELEGRAM = "003" +
-            "";
+    String TELEGRAM = "003";
 }

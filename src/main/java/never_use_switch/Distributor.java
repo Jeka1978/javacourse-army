@@ -1,9 +1,11 @@
 package never_use_switch;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import static never_use_switch.DistribConst.SMS;
-import static never_use_switch.DistribConst.WHATSAPP;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Evgeny Borisov
@@ -11,21 +13,28 @@ import static never_use_switch.DistribConst.WHATSAPP;
 @Component
 public class Distributor {
 
+
+    private Map<String, Sender> map = new HashMap<>();
+
+    @Autowired
+    public Distributor(List<Sender> senders) {
+
+        for (Sender sender : senders) {
+            map.put(sender.myType(), sender);
+        }
+    }
+
+
     public void sendMessage(Message message) {
         String type = message.getDistributionType();
-        switch (type) {
-            case SMS:
-                System.out.println(message.getContent() + " was sent by sms");
-                break;
-            case WHATSAPP:
-                //50 lines of code
-                System.out.println(message.getContent() + " was sent by whatsaap");
-                break;
+        Sender sender = map.get(type);
 
-            default:
-                throw new UnsupportedOperationException(type + " not supported yet");
-
+        if (sender == null) {
+            throw new UnsupportedOperationException(type + " not supported yet");
         }
+        sender.sendMessage(message);
+
+
     }
 }
 
