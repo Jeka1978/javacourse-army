@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="real_spring.InjectRandomNameBeanPostProcessor"/>
+
+    <bean id="serviceZ" class="real_spring.ServiceZ" init-method="doWork">
+        <property name="serviceY" ref="serviceY"/>
+    </bean>
+    <bean id="serviceX" class="real_spring.ServiceX" init-method="doWork">
+        <property name="serviceY" ref="serviceY"/>
+    </bean>
+    <bean id="serviceY" class="real_spring.ServiceY" scope="prototype"/>
+
+
+
+</beans>
