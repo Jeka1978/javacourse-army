@@ -8,15 +8,12 @@ import static never_use_switch.DistribConst.WHATSAPP;
 /**
  * @author Evgeny Borisov
  */
-@Component
+@Component(TELEGRAM)
 public class TelegramSender implements Sender {
     @Override
     public void sendMessage(Message message) {
         System.out.println("telegram!!!!");
     }
 
-    @Override
-    public String myType() {
-        return WHATSAPP;
-    }
+
 }

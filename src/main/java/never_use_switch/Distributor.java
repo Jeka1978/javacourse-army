@@ -14,15 +14,10 @@ import java.util.Map;
 public class Distributor {
 
 
-    private Map<String, Sender> map = new HashMap<>();
-
     @Autowired
-    public Distributor(List<Sender> senders) {
+    private Map<String, Sender> map;
 
-        for (Sender sender : senders) {
-            map.put(sender.myType(), sender);
-        }
-    }
+
 
 
     public void sendMessage(Message message) {

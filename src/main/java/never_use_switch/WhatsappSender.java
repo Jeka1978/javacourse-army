@@ -2,13 +2,12 @@ package never_use_switch;
 
 import org.springframework.stereotype.Component;
 
-import static never_use_switch.DistribConst.SMS;
-import static never_use_switch.DistribConst.WHATSAPP;
+import static never_use_switch.DistribConst.*;
 
 /**
  * @author Evgeny Borisov
  */
-@Component
+@Component(WHATSAPP)
 public class WhatsappSender implements Sender {
     @Override
     public void sendMessage(Message message) {
@@ -16,10 +15,6 @@ public class WhatsappSender implements Sender {
         System.out.println("whatsapp was sent: "+message.getContent());
     }
 
-    @Override
-    public String myType() {
-        return WHATSAPP;
-    }
 }
 
 
