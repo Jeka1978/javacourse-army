@@ -12,9 +12,16 @@ import static org.junit.Assert.*;
  */
 public class ListUtilsTest {
 
+    List<String> strings = asList("java", "java", "Java", "Scala", "JAVA");
+
+    @Test
+    public void foreachWithDelay() {
+        ListUtils.forEachWithDelay(strings,
+                200,(Action<String>) System.out::println);
+    }
+
     @Test
     public void countDuplicates() {
-        List<String> strings = asList("java", "java", "Java", "Scala", "JAVA");
         int countDuplicates =
                 ListUtils.countDuplicates("java", strings, (t1, t2) -> t1.equalsIgnoreCase(t2));
         System.out.println(countDuplicates);
