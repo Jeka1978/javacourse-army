@@ -15,5 +15,10 @@ public class TelegramSender implements Sender {
         System.out.println("telegram!!!!");
     }
 
+    @Override
+    public String myType() {
+        return TELEGRAM;
+    }
+
 
 }

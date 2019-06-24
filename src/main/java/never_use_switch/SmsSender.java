@@ -15,4 +15,9 @@ public class SmsSender implements Sender {
         System.out.println("sms was sent: " + message.getContent());
     }
 
+    @Override
+    public String myType() {
+        return SMS;
+    }
+
 }

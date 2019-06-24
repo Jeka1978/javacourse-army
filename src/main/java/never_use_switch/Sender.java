@@ -5,5 +5,6 @@ package never_use_switch;
  */
 public interface Sender {
     void sendMessage(Message message);
+    String myType();
 
 }

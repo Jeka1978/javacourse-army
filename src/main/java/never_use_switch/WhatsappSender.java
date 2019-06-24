@@ -15,6 +15,11 @@ public class WhatsappSender implements Sender {
         System.out.println("whatsapp was sent: "+message.getContent());
     }
 
+    @Override
+    public String myType() {
+        return WHATSAPP;
+    }
+
 }
 
 

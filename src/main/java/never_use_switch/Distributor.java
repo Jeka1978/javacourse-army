@@ -3,9 +3,11 @@ package never_use_switch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.toMap;
 
 /**
  * @author Evgeny Borisov
@@ -13,12 +15,13 @@ import java.util.Map;
 @Component
 public class Distributor {
 
-
-    @Autowired
     private Map<String, Sender> map;
 
-
-
+    @Autowired
+    public Distributor(List<Sender> senders) {
+        map = senders.stream()
+                .collect(toMap(Sender::myType, identity()));
+    }
 
     public void sendMessage(Message message) {
         String type = message.getDistributionType();
